@@ -13,12 +13,17 @@ from viser.extras import ViserUrdf
 
 import pyroki_snippets as pks
 
+import yourdfpy
 
 def main():
     """Main function for basic IK."""
 
-    urdf = load_robot_description("panda_description")
-    target_link_name = "panda_hand"
+    # urdf = load_robot_description("panda_description")
+    urdf = yourdfpy.URDF.load(
+        "../assert/xarm7/xarm7.urdf",
+        mesh_dir="../assert/xarm7"
+    )
+    target_link_name = 'link_eef'
 
     # Create robot.
     robot = pk.Robot.from_urdf(urdf)
