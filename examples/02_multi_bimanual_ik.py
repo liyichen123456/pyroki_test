@@ -34,11 +34,23 @@ def main():
     )
     target_link_names_2 = ["openarm_right_hand", "openarm_left_hand"]
 
-    urdf3, robot3 = load_robot(
-        "../thirdparty/unitree_rl_gym/resources/robots/g1_description/g1_dual_arm.urdf",
-        "../thirdparty/unitree_rl_gym/resources/robots/g1_description"
+    urdf2, robot2 = load_robot(
+        "/home/ps/project/ConSensV2Lab/thirdparty/openarm_wuji_description/openarm_wuji_bimanual.urdf",
+        "/home/ps/project/ConSensV2Lab/thirdparty/openarm_wuji_description"
     )
-    target_link_names_3 = ["right_rubber_hand", "left_rubber_hand"]
+    target_link_names_2 = ["right_palm_link", "left_palm_link"]
+
+    # urdf3, robot3 = load_robot(
+    #     "../thirdparty/unitree_rl_gym/resources/robots/g1_description/g1_dual_arm.urdf",
+    #     "../thirdparty/unitree_rl_gym/resources/robots/g1_description"
+    # )
+    # target_link_names_3 = ["right_rubber_hand", "left_rubber_hand"]
+
+    urdf3, robot3 = load_robot(
+        "/home/ps/project/ConSensV2Lab/thirdparty/g1_wuji_description/g1_wuji_dual.urdf",
+        "/home/ps/project/ConSensV2Lab/thirdparty/g1_wuji_description"
+    )
+    target_link_names_3 = ["right_palm_link", "left_palm_link"]
 
     # ------------------------------------------------
     # create robot base frames
@@ -48,9 +60,9 @@ def main():
     base2 = server.scene.add_frame("/robot2")
     base3 = server.scene.add_frame("/robot3")
 
-    offset1 = np.array([0.0, 0.0, -0.3]) # dual_xarm7
-    offset2 = np.array([0.0, 0.0, -0.3]) # openarm_bimanual
-    offset3 = np.array([0.0, 0.0, -0.1]) # g1_dual_arm
+    offset1 = np.array([0.0, 0.0, -0.3])  # dual_xarm7
+    offset2 = np.array([0.0, 0.0, -0.3])  # openarm_bimanual
+    offset3 = np.array([0.0, 0.0, -0.1])  # g1_dual_arm
 
     base1.position = offset1
     base2.position = offset2

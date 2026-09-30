@@ -12,6 +12,10 @@ import pyroki as pk
 from viser.extras import ViserUrdf
 import pyroki_snippets as pks
 import yourdfpy
+from pathlib import Path
+FILE_PATH = Path(__file__).resolve()
+DIR_PATH = FILE_PATH.parent.parent
+
 
 def main():
     """Main function for bimanual IK."""
@@ -28,10 +32,10 @@ def main():
 
     # openarm_bimanual
     urdf = yourdfpy.URDF.load(
-        "../thirdparty/ros2_ws_1/openarm_bimanual.urdf",
-        mesh_dir="../thirdparty/ros2_ws_1"
+        f"{DIR_PATH}/thirdparty/ros2_ws_1/openarm_bimanual_raw.urdf",
+        mesh_dir=f"{DIR_PATH}/thirdparty/ros2_ws_1"
     )
-    target_link_names = ["openarm_right_hand", "openarm_left_hand"] # 需要移动urdf到阳间位置
+    target_link_names = ["openarm_right_hand", "openarm_left_hand"]
 
     # g1_dual_arm
     # urdf = yourdfpy.URDF.load(
@@ -39,7 +43,7 @@ def main():
     #     mesh_dir="../thirdparty/unitree_rl_gym/resources/robots/g1_description"
     # )
     # target_link_names = ["right_rubber_hand", "left_rubber_hand"]
-    
+
     # Create robot.
     robot = pk.Robot.from_urdf(urdf)
 
@@ -85,7 +89,7 @@ def main():
             target_positions=np.array([ik_target_0.position - base_offset, ik_target_1.position - base_offset]),
             # target_positions=np.array([ik_target_0.position, ik_target_1.position]),
             target_wxyzs=np.array([ik_target_0.wxyz, ik_target_1.wxyz]),
-        )# IK 是在机器人 URDF 的 base frame（root link）坐标系下求解的，不是 Viser 的世界坐标系。
+        )  # IK 是在机器人 URDF 的 base frame（root link）坐标系下求解的，不是 Viser 的世界坐标系。
 
         # Update timing handle.
         elapsed_time = time.time() - start_time
