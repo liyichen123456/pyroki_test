@@ -403,7 +403,7 @@
     </collision>
   </link>
   <joint name="left_hand_palm_joint" type="fixed">
-    <origin xyz="0.0415 0.003 0" rpy="0 0 0"/>
+    <origin xyz="0.0415 0.003 0" rpy="3.14 -1.57 0"/>
     <parent link="left_wrist_yaw_link"/>
     <child link="left_rubber_hand"/>
   </joint>
@@ -414,7 +414,7 @@
       <inertia ixx="0.00010099485234748" ixy="0.00003618590790516" ixz="-0.00000074301518642" iyy="0.00028135871571621" iyz="0.00000330189743286" izz="0.00021894770413514"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 -1.57 -3.14"/>
       <geometry>
         <mesh filename="meshes/left_rubber_hand.STL"/>
       </geometry>
@@ -627,7 +627,7 @@
     </collision>
   </link>
   <joint name="right_hand_palm_joint" type="fixed">
-    <origin xyz="0.0415 -0.003 0" rpy="0 0 0"/>
+    <origin xyz="0.0415 -0.003 0" rpy="3.14 -1.57 0"/>
     <parent link="right_wrist_yaw_link"/>
     <child link="right_rubber_hand"/>
   </joint>
@@ -638,7 +638,7 @@
       <inertia ixx="0.00010099485234748" ixy="-0.00003618590790516" ixz="-0.00000074301518642" iyy="0.00028135871571621" iyz="-0.00000330189743286" izz="0.00021894770413514"/>
     </inertial>
     <visual>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <origin xyz="0 0 0" rpy="0 -1.57 -3.14"/>
       <geometry>
         <mesh filename="meshes/right_rubber_hand.STL"/>
       </geometry>
